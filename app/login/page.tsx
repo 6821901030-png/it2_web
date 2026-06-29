@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function LoginPage() {
+export default function loginPage() {
   const router = useRouter();
 
   const [form, setForm] = useState({
@@ -24,7 +24,7 @@ export default function LoginPage() {
       router.push("/dashboard");
       router.refresh();
     } else {
-      alert("Login failed");
+      alert("login failed");
     }
   }
 
@@ -45,7 +45,7 @@ export default function LoginPage() {
           onChange={(e) => setForm({ ...form, password: e.target.value })}
         />
 
-        <button>Login</button>
+        <button>login</button>
 
         <p>
           <Link href="/forgot-password">Forgot Password?</Link>
