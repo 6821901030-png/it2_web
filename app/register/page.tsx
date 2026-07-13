@@ -29,18 +29,24 @@ export default function Register() {
         <div className="auth-page">
             <form className="auth-card" onSubmit={handleSubmit}>
                 <h1> สมัครสมาชิก </h1>
+
                 <input
                     placeholder="ชื่อ นามสกุล"
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                 />
+
                 <input
                     placeholder="Email"
+                    type="email"
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
                 />
+
                 <input
                     placeholder="Password"
+                    type="password"
                     onChange={(e) => setForm({ ...form, password: e.target.value })}
                 />
+                
                 <button> Register </button>
             </form>
         </div>
