@@ -167,14 +167,15 @@ export default function ProductForm() {
   }
 
   return (
+    <div  className="category-page">
     <form
       onSubmit={handleSubmit}
-      className="mx-auto max-w-2xl space-y-4 rounded-xl border p-6"
+      className="pro-card"
     >
-      <h1 className="text-2xl font-bold">เพิ่มสินค้า</h1>
+      <h1>เพิ่มสินค้า</h1>
 
       <div>
-        <label className="mb-1 block font-medium">
+        <label>
           ชื่อสินค้า
         </label>
 
@@ -184,13 +185,12 @@ export default function ProductForm() {
           onChange={(event) =>
             handleNameChange(event.target.value)
           }
-          className="w-full rounded-lg border px-3 py-2"
           required
         />
       </div>
 
       <div>
-        <label className="mb-1 block font-medium">Slug</label>
+        <label>Slug</label>
 
         <input
           type="text"
@@ -201,13 +201,12 @@ export default function ProductForm() {
               slug: event.target.value,
             })
           }
-          className="w-full rounded-lg border px-3 py-2"
           required
         />
       </div>
 
       <div>
-        <label className="mb-1 block font-medium">
+        <label>
           รายละเอียดสินค้า
         </label>
 
@@ -224,9 +223,9 @@ export default function ProductForm() {
         />
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div>
         <div>
-          <label className="mb-1 block font-medium">
+          <label>
             ราคา
           </label>
 
@@ -241,13 +240,12 @@ export default function ProductForm() {
                 price: event.target.value,
               })
             }
-            className="w-full rounded-lg border px-3 py-2"
             required
           />
         </div>
 
         <div>
-          <label className="mb-1 block font-medium">
+          <label>
             จำนวนสินค้า
           </label>
 
@@ -261,14 +259,13 @@ export default function ProductForm() {
                 stock: event.target.value,
               })
             }
-            className="w-full rounded-lg border px-3 py-2"
             required
           />
         </div>
       </div>
 
       <div>
-        <label className="mb-1 block font-medium">
+        <label>
           หมวดหมู่
         </label>
 
@@ -280,7 +277,6 @@ export default function ProductForm() {
               category: event.target.value,
             })
           }
-          className="w-full rounded-lg border px-3 py-2"
           required
         >
           <option value="">เลือกหมวดหมู่</option>
@@ -297,7 +293,7 @@ export default function ProductForm() {
       </div>
 
       <div>
-        <label className="mb-1 block font-medium">
+        <label>
           รูปสินค้า
         </label>
 
@@ -306,28 +302,27 @@ export default function ProductForm() {
           accept="image/jpeg,image/png,image/webp"
           onChange={handleImageUpload}
           disabled={uploading}
-          className="w-full rounded-lg border px-3 py-2"
         />
 
         {uploading && (
-          <p className="mt-2 text-sm">
+          <p>
             กำลังอัปโหลดรูป...
           </p>
         )}
       </div>
 
       {form.imageUrl && (
-        <div className="relative h-64 w-full overflow-hidden rounded-xl border">
+        <div>
           <Image
             src={form.imageUrl}
             alt={form.name || "ตัวอย่างรูปสินค้า"}
             fill
-            className="object-contain"
+            
           />
         </div>
       )}
 
-      <label className="flex items-center gap-2">
+      <label>
         <input
           type="checkbox"
           checked={form.published}
@@ -343,7 +338,7 @@ export default function ProductForm() {
       </label>
 
       {message && (
-        <p className="rounded-lg bg-gray-100 p-3">
+        <p>
           {message}
         </p>
       )}
@@ -351,10 +346,10 @@ export default function ProductForm() {
       <button
         type="submit"
         disabled={submitting || uploading}
-        className="rounded-lg bg-black px-5 py-2 text-white disabled:opacity-50"
       >
         {submitting ? "กำลังบันทึก..." : "เพิ่มสินค้า"}
       </button>
     </form>
+    </div>
   );
 }
