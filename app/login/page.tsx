@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function loginPage() {
+export default function LoginPage() {
   const router = useRouter();
 
   const [form, setForm] = useState({
@@ -21,10 +21,15 @@ export default function loginPage() {
     });
 
     if (res.ok) {
+      const data = await res.json();
+      // Notify the mounted Navbar before navigating so it switches to the logged-in menu immediately.
+      window.dispatchEvent(
+        new CustomEvent("auth-change", { detail: { user: data.user } })
+      );
       router.push("/dashboard");
       router.refresh();
     } else {
-      alert("login failed");
+      alert("Login failed");
     }
   }
 
@@ -45,7 +50,7 @@ export default function loginPage() {
           onChange={(e) => setForm({ ...form, password: e.target.value })}
         />
 
-        <button>login</button>
+        <button>Login</button>
 
         <p>
           <Link href="/forgot-password">Forgot Password?</Link>
